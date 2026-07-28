@@ -1,16 +1,16 @@
 import { createFileRoute } from "@tanstack/react-router";
-import { useState } from "react";
-import logo from "@/assets/logo-v2.png.asset.json";
-import chindhu from "@/assets/chindhu.jpg.asset.json";
-import avinash from "@/assets/avinash.jpg.asset.json";
-import pratheesh from "@/assets/pratheesh.png.asset.json";
-import sreehari from "@/assets/sreehari.png.asset.json";
-import { Instagram, Phone, Mail, MapPin, ArrowUpRight, Film, Sparkles, Clapperboard, Megaphone, Users, Zap, Send } from "lucide-react";
+import { Card, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
+const logo = "/images/logo.png";
+const chindhu = "/images/chindhu.jpg";
+const avinash = "/images/avinash.jpg";
+const pratheesh = "/images/pratheesh.jpg";
+const sreehari = "/images/sreehari.jpg";
+import { Instagram, Mail, MapPin, ArrowUpRight, ArrowRight, Film, Sparkles, Clapperboard, Megaphone, Users, Zap } from "lucide-react";
 
 export const Route = createFileRoute("/")({
   head: () => ({
     meta: [
-      { title: "Ukulele Originals — Creative Studio for Ads & Micro Dramas" },
+      { title: "Ukulele Originals" },
       { name: "description", content: "We craft scroll-stopping ads, micro dramas and brand stories for Kerala's most curious brands. Stories that stay with you." },
       { name: "keywords", content: "ad film production Kerala, micro drama studio, Thrissur ad agency, brand films Kerala, Instagram reels production, Ukulele Originals" },
       { property: "og:title", content: "Ukulele Originals — Stories that stay with you" },
@@ -55,11 +55,11 @@ export const Route = createFileRoute("/")({
 const INSTA = "https://www.instagram.com/ukulele.originals/";
 
 const SERVICES = [
-  { icon: Megaphone, title: "Brand Ads & Commercials", desc: "Punchy, story-driven ads engineered for reels, YouTube pre-rolls and OTT bumpers." },
+  { icon: Megaphone, title: "Brand Ads & Commercials", desc: "Punchy, story-driven ads engineered for reels and YouTube pre-rolls." },
   { icon: Clapperboard, title: "Micro Dramas", desc: "60–90 second episodic dramas that turn your product into the hero of a story people finish." },
   { icon: Film, title: "Short Films & Brand Films", desc: "Cinematic long-form content that builds your brand's mythology, not just its awareness." },
   { icon: Sparkles, title: "Reels & Social Stories", desc: "Hook-first vertical content built for the algorithm and calibrated to your tone." },
-  { icon: Users, title: "Casting & Talent", desc: "In-house ensemble of trained actors — no last-minute scrambling for the right face." },
+  { icon: Users, title: "Casting & Talent", desc: "In-house ensemble of trained actors — and if a story calls for a face we don't have, we cast accordingly. No last-minute scrambling." },
   { icon: Zap, title: "End-to-End Production", desc: "Concept, script, direction, shoot, edit, sound, colour. One team. One phone call." },
 ];
 
@@ -80,7 +80,7 @@ const OWNERS: Owner[] = [
     role: "Co-Founder · Actor · Creative Lead",
     tagline: "The face on screen — and the eye behind the frame.",
     bio: "Actor across film, television and web. Currently lead on Surya Comedy's 'Karyam Nisaram Presnam Gurutharam'. A performer who reads scripts like a director and directs like a performer.",
-    image: chindhu.url,
+    image: chindhu,
     insta: "https://www.instagram.com/chindhu_prasad_sathya",
     sections: [
       { title: "Television", items: ["Surya Comedy — Lead, 'Karyam Nisaram Presnam Gurutharam'"] },
@@ -94,7 +94,7 @@ const OWNERS: Owner[] = [
     role: "Co-Founder · Director · Writer",
     tagline: "Writes it. Shoots it. Cuts it. Wins for it.",
     bio: "Writer-director building tight, feeling-first stories. Award-winning at the College Short Film Festival for both direction and technical craft. Also acts when the role earns it.",
-    image: sreehari.url,
+    image: sreehari,
     insta: "https://www.instagram.com/_sreehari_p_k__",
     sections: [
       { title: "Direction", items: ["Writer & Director — 3 short films", "Writer & Director — 2 commercial advertisements"] },
@@ -108,7 +108,7 @@ const OWNERS: Owner[] = [
     role: "Co-Founder · Actor · Story-driven Performer",
     tagline: "Story-driven performer. Thrissur-based. Ready to travel.",
     bio: "Trained actor with credits across OTT, film, short-form and brand — from Disney+ Hotstar's 1000 Babies to Jos Alukkas and Torc. Multilingual, movement-trained, and built for characters that carry a story.",
-    image: avinash.url,
+    image: avinash,
     insta: "https://www.instagram.com/actor.avinaash_vijayan",
     sections: [
       { title: "Web Series", items: ["Amazon Micro Series", "1000 Babies — Disney+ Hotstar", "Blindfold — SonyLIV (Upcoming)", "Padavett (Upcoming)"] },
@@ -127,35 +127,30 @@ const ACTORS = [
     name: "Pratheesh Prakash",
     role: "Actor",
     credits: ["Surya Comedy — Artist", "Family Circus — Lead Role"],
-    image: pratheesh.url,
+    image: pratheesh,
     insta: "https://www.instagram.com/pratheesh__prakash",
   },
   {
     name: "Chindhu Prasad",
-    role: "Lead Actor",
+    role: "Actor/Director/Writer",
     credits: ["Innocent", "Kottikalaasham", "Surya Comedy — Hero"],
-    image: chindhu.url,
+    image: chindhu,
     insta: "https://www.instagram.com/chindhu_prasad_sathya",
   },
   {
     name: "Sreehari P K",
-    role: "Actor · Director",
+    role: "Actor/Director/Writer",
     credits: ["3 Short Films", "2 Commercial Ads", "Feature Film"],
-    image: sreehari.url,
+    image: sreehari,
     insta: "https://www.instagram.com/_sreehari_p_k__",
   },
   {
     name: "Avinash Vijayan",
-    role: "Lead Actor",
+    role: "Actor/Director/Writer",
     credits: ["1000 Babies (Disney+ Hotstar)", "Izha", "Jos Alukkas · Torc Ads"],
-    image: avinash.url,
+    image: avinash,
     insta: "https://www.instagram.com/actor.avinaash_vijayan",
   },
-];
-
-const CLIENTS = [
-  "Jos Alukkas", "Nambisan Ghee", "Torc", "Surya Comedy", "Disney+ Hotstar", "SonyLIV",
-  "Amazon", "RU-Vlog", "Ponmutta",
 ];
 
 function Index() {
@@ -163,7 +158,6 @@ function Index() {
     <div className="min-h-screen bg-background text-foreground">
       <Nav />
       <Hero />
-      <Marquee />
       <About />
       <Services />
       <Owners />
@@ -180,19 +174,19 @@ function Nav() {
     <header className="fixed top-3 inset-x-3 md:inset-x-6 z-50 rounded-full glass glass-hi">
       <div className="mx-auto max-w-7xl px-6 h-16 flex items-center justify-between">
         <a href="#top" className="flex items-center gap-2">
-          <img src={logo.url} alt="Ukulele Originals" className="h-10 w-10 object-contain drop-shadow-[0_4px_12px_oklch(0.78_0.14_82/0.5)]" />
+          <img src={logo} alt="Ukulele Originals" className="h-10 w-10 object-contain drop-shadow-[0_4px_12px_oklch(0.78_0.14_82/0.5)]" />
           <span className="font-display text-xl">Ukulele<span className="text-gradient">.originals</span></span>
         </a>
         <nav className="hidden md:flex items-center gap-8 text-sm text-muted-foreground">
-          <a href="#work" className="hover:text-foreground transition-colors">Studio</a>
-          <a href="#services" className="hover:text-foreground transition-colors">Services</a>
-          <a href="#owners" className="hover:text-foreground transition-colors">Founders</a>
-          <a href="#talent" className="hover:text-foreground transition-colors">Talent</a>
-          <a href="#contact" className="hover:text-foreground transition-colors">Contact</a>
+          <a href="#work" className="nav-link hover:text-foreground">Studio</a>
+          <a href="#services" className="nav-link hover:text-foreground">Services</a>
+          <a href="#owners" className="nav-link hover:text-foreground">Founders</a>
+          <a href="#talent" className="nav-link hover:text-foreground">Talent</a>
+          <a href="#contact" className="nav-link hover:text-foreground">Contact</a>
         </nav>
         <a
           href="#contact"
-          className="hidden sm:inline-flex items-center gap-1.5 rounded-full bg-brand px-4 py-2 text-sm font-medium text-primary-foreground shadow-glow hover:scale-105 transition"
+          className="btn-neu hidden sm:inline-flex items-center gap-1.5 rounded-full bg-brand px-4 py-2 text-sm font-medium text-primary-foreground transition"
         >
           Start a project <ArrowUpRight className="h-4 w-4" />
         </a>
@@ -201,9 +195,36 @@ function Nav() {
   );
 }
 
+function HeroWordmark() {
+  const stats = [
+    { n: "1K+", l: "Followers & growing" },
+    { n: "30+", l: "Films shipped" },
+    { n: "4", l: "In-house actors" },
+  ];
+  return (
+    <div className="mt-10 flex flex-col items-center text-center lg:mt-0 lg:items-end lg:justify-self-end lg:text-right">
+      <div className="flex flex-col leading-[0.9]">
+        <span className="text-[22px] font-black text-[#3a4568] lg:text-[38px]">UKU</span>
+        <span className="text-[26px] font-black text-[#4a5580] lg:text-[44px]">LELE</span>
+        <span className="text-[30px] font-black text-[#7a642f] lg:text-[44px] xl:text-[50px]">ORIGIN</span>
+        <span className="text-[34px] font-black text-[#d4a94a] lg:text-[46px] xl:text-[58px]">ALS</span>
+      </div>
+      <div className="mt-6 h-px w-full bg-[#1c2338]" />
+      <div className="mt-4 flex gap-6 lg:gap-8">
+        {stats.map((s) => (
+          <div key={s.l}>
+            <div className="font-display text-[22px] leading-none text-[#d4a94a]">{s.n}</div>
+            <div className="mt-1 text-[9px] uppercase tracking-widest text-muted-foreground">{s.l}</div>
+          </div>
+        ))}
+      </div>
+    </div>
+  );
+}
+
 function Hero() {
   return (
-    <section id="top" className="relative overflow-hidden bg-hero noise pt-32 pb-24 md:pt-40 md:pb-32">
+    <section id="top" className="relative overflow-hidden bg-hero noise pt-32 pb-12 md:pt-40 md:pb-16">
       <div className="aurora" aria-hidden />
       <div className="relative mx-auto max-w-7xl px-6 grid lg:grid-cols-[1.4fr_1fr] gap-10 items-center">
         <div className="reveal">
@@ -211,7 +232,7 @@ function Hero() {
             <span className="h-1.5 w-1.5 rounded-full bg-primary animate-pulse" />
             Thrissur, Kerala
           </div>
-          <h1 className="font-display mt-6 text-4xl sm:text-5xl md:text-7xl lg:text-[5.5rem] leading-[0.95] tracking-tight">
+          <h1 className="font-display mt-6 text-3xl md:text-4xl lg:text-5xl xl:text-6xl leading-[0.95] tracking-tight md:whitespace-nowrap">
             Stories that <span className="text-gradient">stay with you</span> — built for the scroll.
           </h1>
           <p className="mt-6 max-w-2xl text-base md:text-xl text-muted-foreground leading-relaxed">
@@ -220,69 +241,29 @@ function Hero() {
             engineered to make people stop, watch, and remember.
           </p>
           <div className="mt-8 md:mt-10 flex flex-wrap gap-3">
-            <a href="#contact" className="inline-flex items-center gap-2 rounded-full bg-brand px-6 py-3 text-sm font-medium text-primary-foreground shadow-glow hover:opacity-90 transition">
+            <a href="#contact" className="btn-neu inline-flex items-center gap-2 rounded-full bg-brand px-6 py-3 text-sm font-medium text-primary-foreground transition">
               Pitch us your brand <ArrowUpRight className="h-4 w-4" />
             </a>
-            <a href={INSTA} target="_blank" rel="noreferrer" className="inline-flex items-center gap-2 rounded-full border border-border bg-card/40 px-6 py-3 text-sm font-medium hover:bg-card transition">
+            <a href={INSTA} target="_blank" rel="noreferrer" className="btn-neu inline-flex items-center gap-2 rounded-full bg-card/60 px-6 py-3 text-sm font-medium hover:bg-card transition">
               <Instagram className="h-4 w-4" /> Watch on Instagram
             </a>
           </div>
-
-          <div className="mt-12 md:mt-16 grid grid-cols-3 max-w-lg gap-4 sm:gap-8 border-t border-border pt-8">
-            <Stat n="1K+" l="Followers & growing" />
-            <Stat n="30+" l="Films shipped" />
-            <Stat n="4" l="In-house actors" />
-          </div>
         </div>
 
-        <div className="pointer-events-none hidden lg:block justify-self-end">
-          <div className="relative w-[360px] h-[360px] xl:w-[440px] xl:h-[440px]">
-            <div className="absolute inset-8 rounded-full bg-brand opacity-40 blur-3xl" />
-            <img
-              src={logo.url}
-              alt=""
-              aria-hidden
-              className="relative w-full h-full object-contain float-slow drop-shadow-[0_30px_60px_oklch(0.78_0.14_82/0.55)]"
-            />
-          </div>
-        </div>
+        <HeroWordmark />
       </div>
     </section>
   );
 }
 
-function Stat({ n, l }: { n: string; l: string }) {
-  return (
-    <div>
-      <div className="font-display text-3xl sm:text-4xl md:text-5xl text-gradient">{n}</div>
-      <div className="mt-1 text-[10px] sm:text-xs uppercase tracking-widest text-muted-foreground leading-tight">{l}</div>
-    </div>
-  );
-}
-
-function Marquee() {
-  const items = [...CLIENTS, ...CLIENTS];
-  return (
-    <div className="relative overflow-hidden border-y border-border py-6 bg-card/30">
-      <div className="marquee whitespace-nowrap">
-        {items.map((c, i) => (
-          <span key={i} className="text-sm uppercase tracking-[0.3em] text-muted-foreground flex items-center gap-12">
-            {c} <span className="text-primary">✦</span>
-          </span>
-        ))}
-      </div>
-    </div>
-  );
-}
-
 function About() {
   return (
-    <section id="work" className="relative py-24 md:py-32">
-      <div className="mx-auto max-w-7xl px-6 grid md:grid-cols-12 gap-12">
+    <section id="work" className="relative py-10 md:py-14">
+      <div className="mx-auto max-w-7xl px-6 grid md:grid-cols-12 gap-12 md:items-center">
         <div className="md:col-span-4">
           <div className="text-xs uppercase tracking-[0.3em] text-primary">The studio</div>
           <h2 className="font-display mt-4 text-4xl md:text-5xl leading-tight">
-            A little studio with a<br /> cinematic obsession.
+            A little studio with a cinematic obsession.
           </h2>
         </div>
         <div className="md:col-span-7 md:col-start-6 text-lg text-muted-foreground leading-relaxed space-y-5">
@@ -304,9 +285,9 @@ function About() {
 
 function Services() {
   return (
-    <section id="services" className="relative py-24 md:py-32 bg-card/30 border-y border-border">
+    <section id="services" className="relative py-10 md:py-14 bg-card/30 border-y border-border">
       <div className="mx-auto max-w-7xl px-6">
-        <div className="flex items-end justify-between flex-wrap gap-6 mb-14">
+        <div className="flex items-end justify-between flex-wrap gap-6 mb-6">
           <div>
             <div className="text-xs uppercase tracking-[0.3em] text-primary">What we make</div>
             <h2 className="font-display mt-4 text-4xl md:text-6xl leading-tight max-w-2xl">
@@ -314,18 +295,20 @@ function Services() {
             </h2>
           </div>
         </div>
-        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-5">
+        <div className="grid gap-5 md:grid-cols-2 lg:grid-cols-3">
           {SERVICES.map(({ icon: Icon, title, desc }) => (
-            <div key={title} className="group relative rounded-2xl glass glass-hi tilt-3d p-7 overflow-hidden">
-              <div className="absolute -inset-32 opacity-0 group-hover:opacity-100 transition-opacity duration-700 bg-brand/20 blur-3xl pointer-events-none" />
-              <div className="relative">
-                <div className="inline-flex h-12 w-12 items-center justify-center rounded-2xl bg-brand text-primary-foreground shadow-glow">
-                  <Icon className="h-5 w-5" />
+            <Card
+              key={title}
+              className="group border-border/60 bg-card/60 backdrop-blur transition-all duration-300 hover:-translate-y-1 hover:border-primary/50 hover:shadow-lg hover:shadow-primary/10"
+            >
+              <CardHeader>
+                <div className="flex h-11 w-11 items-center justify-center rounded-lg bg-primary/10 text-primary transition-colors duration-300 group-hover:bg-primary/20">
+                  <Icon className="h-5 w-5" strokeWidth={1.75} />
                 </div>
-                <h3 className="mt-5 font-display text-2xl">{title}</h3>
-                <p className="mt-2 text-sm text-muted-foreground leading-relaxed">{desc}</p>
-              </div>
-            </div>
+                <CardTitle className="pt-2 font-display text-2xl font-normal">{title}</CardTitle>
+                <CardDescription className="leading-relaxed">{desc}</CardDescription>
+              </CardHeader>
+            </Card>
           ))}
         </div>
       </div>
@@ -344,7 +327,7 @@ function InitialAvatar({ name }: { name: string }) {
 
 function Owners() {
   return (
-    <section id="owners" className="relative py-24 md:py-32 overflow-hidden">
+    <section id="owners" className="relative py-10 md:py-14 overflow-hidden">
       <div className="aurora opacity-60" aria-hidden />
       <div className="relative mx-auto max-w-7xl px-6">
         <div className="text-xs uppercase tracking-[0.3em] text-primary">The founders</div>
@@ -355,7 +338,7 @@ function Owners() {
           Scroll each card for the full portfolio — credits, training and every reel that got us here.
         </p>
 
-        <div className="mt-14 grid md:grid-cols-3 gap-7">
+        <div className="mt-6 grid md:grid-cols-3 gap-7">
           {OWNERS.map((o) => (
             <OwnerCard key={o.name} owner={o} />
           ))}
@@ -367,7 +350,7 @@ function Owners() {
 
 function OwnerCard({ owner: o }: { owner: Owner }) {
   return (
-    <article className="group relative rounded-3xl glass glass-hi tilt-3d overflow-hidden">
+    <article className="group relative rounded-3xl glass glass-hi card-rise overflow-hidden">
       <div className="relative aspect-[4/5] overflow-hidden">
         {o.image ? (
           <img
@@ -419,9 +402,9 @@ function OwnerCard({ owner: o }: { owner: Owner }) {
 
 function Talent() {
   return (
-    <section id="talent" className="relative py-24 md:py-32 bg-card/30 border-y border-border">
+    <section id="talent" className="relative py-10 md:py-14 bg-card/30 border-y border-border">
       <div className="mx-auto max-w-7xl px-6">
-        <div className="flex items-end justify-between flex-wrap gap-6 mb-14">
+        <div className="flex items-end justify-between flex-wrap gap-6 mb-6">
           <div>
             <div className="text-xs uppercase tracking-[0.3em] text-primary">The ensemble</div>
             <h2 className="font-display mt-4 text-4xl md:text-6xl leading-tight max-w-2xl">
@@ -465,27 +448,39 @@ function Talent() {
 
 function Process() {
   const steps = [
-    { n: "01", t: "Brief & Brainstorm", d: "You send a rough idea. We come back with a concept and a mood in 72 hours." },
-    { n: "02", t: "Script & Storyboard", d: "Written, cast and storyboarded in-house. You approve every frame before we roll." },
-    { n: "03", t: "Shoot", d: "One tight crew. Kochi, or wherever your story lives. On-schedule, on-budget." },
-    { n: "04", t: "Edit & Deliver", d: "Colour, sound, motion — final cuts optimised for reels and YouTube. Ready to post." },
+    { n: "01", t: "Brief & Brainstorm", d: "You send a rough idea. We come back with a concept and a mood, right away.", icon: Sparkles },
+    { n: "02", t: "Script & Storyboard", d: "Written, cast and storyboarded in-house. You approve every frame before we roll.", icon: Clapperboard },
+    { n: "03", t: "Shoot", d: "One tight crew, wherever your story lives. On-schedule, on-budget.", icon: Film },
+    { n: "04", t: "Edit & Deliver", d: "Colour, sound, motion — final cuts optimised for reels and YouTube. Ready to post.", icon: Zap },
   ];
   return (
-    <section className="py-24 md:py-32">
+    <section className="py-10 md:py-14">
       <div className="mx-auto max-w-7xl px-6">
         <div className="text-xs uppercase tracking-[0.3em] text-primary">How we work</div>
-        <h2 className="font-display mt-4 text-4xl md:text-6xl leading-tight max-w-3xl">From WhatsApp to wrap in weeks, not quarters.</h2>
-        <div className="mt-14 grid md:grid-cols-4 gap-6">
-          {steps.map((s, i) => (
-            <div key={s.n} className="relative rounded-2xl border border-border bg-card p-6 shadow-card">
-              <div className="font-display text-5xl text-gradient">{s.n}</div>
-              <h3 className="mt-4 font-display text-xl">{s.t}</h3>
-              <p className="mt-2 text-sm text-muted-foreground leading-relaxed">{s.d}</p>
-              {i < steps.length - 1 && (
-                <div className="hidden md:block absolute right-[-14px] top-1/2 -translate-y-1/2 text-primary">→</div>
-              )}
-            </div>
-          ))}
+        <h2 className="font-display mt-4 text-3xl sm:text-4xl md:text-5xl lg:text-6xl leading-tight lg:whitespace-nowrap">From WhatsApp to wrap in weeks, not quarters.</h2>
+        <div className="mt-10 grid gap-5 md:grid-cols-2 lg:grid-cols-4">
+          {steps.map((s, i) => {
+            const Icon = s.icon;
+            return (
+              <div key={s.n} className="relative">
+                <Card className="group relative overflow-hidden border-border/60 bg-card/60 backdrop-blur transition-all duration-300 hover:-translate-y-1.5 hover:border-primary/50 hover:shadow-xl hover:shadow-primary/10">
+                  <div className="pointer-events-none absolute -right-6 -top-6 h-28 w-28 rounded-full bg-primary/20 opacity-0 blur-2xl transition-opacity duration-300 group-hover:opacity-100" />
+                  <CardHeader className="relative">
+                    <div className="flex h-11 w-11 items-center justify-center rounded-lg bg-primary/10 text-primary transition-colors duration-300 group-hover:bg-primary group-hover:text-primary-foreground">
+                      <Icon className="h-5 w-5" strokeWidth={1.75} />
+                    </div>
+                    <CardTitle className="pt-3 font-display text-xl font-normal">{s.t}</CardTitle>
+                    <CardDescription className="leading-relaxed">{s.d}</CardDescription>
+                  </CardHeader>
+                </Card>
+                {i < steps.length - 1 && (
+                  <div className="absolute right-[-14px] top-1/2 z-10 hidden h-7 w-7 -translate-y-1/2 items-center justify-center rounded-full border border-border bg-background text-primary shadow-card lg:flex">
+                    <ArrowRight className="h-3.5 w-3.5" />
+                  </div>
+                )}
+              </div>
+            );
+          })}
         </div>
       </div>
     </section>
@@ -494,159 +489,32 @@ function Process() {
 
 function CTA() {
   return (
-    <section id="contact" className="relative py-24 md:py-32">
-      <div className="mx-auto max-w-6xl px-4 sm:px-6">
+    <section id="contact" className="relative py-10 md:py-14">
+      <div className="mx-auto max-w-4xl px-4 sm:px-6">
         <div className="relative overflow-hidden rounded-3xl bg-brand p-6 sm:p-10 md:p-14 shadow-glow noise">
-          <div className="relative grid lg:grid-cols-2 gap-10">
-           <div>
+          <div className="relative max-w-3xl">
             <div className="text-xs uppercase tracking-[0.3em] text-primary-foreground/80">Let's make something</div>
             <h2 className="font-display mt-4 text-3xl sm:text-4xl md:text-5xl leading-tight text-primary-foreground">
               Got a product? We'll build a world around it.
             </h2>
             <p className="mt-4 text-primary-foreground/90 text-base sm:text-lg">
-              Tell us about your brand and the reaction you want on screen. Send an inquiry or ping us on WhatsApp — we'll take it from there.
+              Tell us about your brand and the reaction you want on screen. Email us or ping us on WhatsApp — we'll take it from there.
             </p>
             <div className="mt-6 flex flex-wrap gap-3">
-              <a href="mailto:ukulele.originals@gmail.com" className="inline-flex items-center gap-2 rounded-full bg-background text-foreground px-6 py-3 text-sm font-medium hover:opacity-90 transition">
+              <a href="mailto:ukulele.originals@gmail.com" className="btn-neu inline-flex items-center gap-2 rounded-full bg-background text-foreground px-6 py-3 text-sm font-medium hover:opacity-90 transition">
                 <Mail className="h-4 w-4" /> ukulele.originals@gmail.com
               </a>
-              <a href={INSTA} target="_blank" rel="noreferrer" className="inline-flex items-center gap-2 rounded-full border border-primary-foreground/30 text-primary-foreground px-6 py-3 text-sm font-medium hover:bg-primary-foreground/10 transition">
+              <a href={INSTA} target="_blank" rel="noreferrer" className="btn-neu inline-flex items-center gap-2 rounded-full bg-primary-foreground/10 text-primary-foreground px-6 py-3 text-sm font-medium hover:bg-primary-foreground/15 transition">
                 <Instagram className="h-4 w-4" /> @ukulele.originals
               </a>
-            </div>
-            <div className="mt-6 grid sm:grid-cols-3 gap-3">
-              {[
-                { name: "Sreehari P K", num: "+91 8075 010 457", tel: "918075010457" },
-                { name: "Chindhu Prasad", num: "+91 91882 90554", tel: "919188290554" },
-                { name: "Avinash Vijayan", num: "+91 81296 20272", tel: "918129620272" },
-              ].map((p) => (
-                <a
-                  key={p.tel}
-                  href={`https://wa.me/${p.tel}`}
-                  target="_blank"
-                  rel="noreferrer"
-                  className="rounded-2xl border border-primary-foreground/25 bg-primary-foreground/5 px-4 py-3 hover:bg-primary-foreground/10 transition"
-                >
-                  <div className="text-[10px] uppercase tracking-[0.25em] text-primary-foreground/70">{p.name}</div>
-                  <div className="mt-1 inline-flex items-center gap-2 text-primary-foreground text-sm font-medium">
-                    <Phone className="h-3.5 w-3.5" /> {p.num}
-                  </div>
-                </a>
-              ))}
             </div>
             <div className="mt-6 inline-flex items-center gap-2 text-primary-foreground/80 text-sm">
               <MapPin className="h-4 w-4" /> Thrissur, Kerala · Available across India
             </div>
-           </div>
-           <InquiryForm />
           </div>
         </div>
       </div>
     </section>
-  );
-}
-
-function InquiryForm() {
-  const [sent, setSent] = useState(false);
-  const [form, setForm] = useState({
-    brand: "",
-    project: "Ad",
-    budget: "₹50k – ₹1L",
-    timeline: "2–4 weeks",
-    name: "",
-    email: "",
-    message: "",
-  });
-  const set = (k: keyof typeof form) => (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) =>
-    setForm({ ...form, [k]: e.target.value });
-
-  const submit = (e: React.FormEvent) => {
-    e.preventDefault();
-    const body = [
-      `Brand: ${form.brand}`,
-      `Project type: ${form.project}`,
-      `Budget: ${form.budget}`,
-      `Timeline: ${form.timeline}`,
-      `From: ${form.name} <${form.email}>`,
-      ``,
-      form.message,
-    ].join("\n");
-    const url = `mailto:ukulele.originals@gmail.com?subject=${encodeURIComponent(
-      `New inquiry — ${form.brand || form.name || "Ukulele Originals"}`,
-    )}&body=${encodeURIComponent(body)}`;
-    window.location.href = url;
-    setSent(true);
-  };
-
-  const field =
-    "w-full rounded-xl bg-primary-foreground/10 border border-primary-foreground/20 px-3 py-2.5 text-sm text-primary-foreground placeholder:text-primary-foreground/50 focus:outline-none focus:border-primary-foreground/60 focus:bg-primary-foreground/15 transition";
-  const label = "text-[10px] uppercase tracking-[0.25em] text-primary-foreground/70";
-
-  return (
-    <form
-      onSubmit={submit}
-      className="relative rounded-2xl bg-primary-foreground/5 border border-primary-foreground/20 p-5 sm:p-6 backdrop-blur-sm space-y-3"
-    >
-      <div className="text-xs uppercase tracking-[0.3em] text-primary-foreground/80 mb-1">Start a project</div>
-      <div className="grid sm:grid-cols-2 gap-3">
-        <div>
-          <div className={label}>Brand / Company</div>
-          <input required value={form.brand} onChange={set("brand")} className={field + " mt-1"} placeholder="Acme Studios" />
-        </div>
-        <div>
-          <div className={label}>Your name</div>
-          <input required value={form.name} onChange={set("name")} className={field + " mt-1"} placeholder="Full name" />
-        </div>
-        <div className="sm:col-span-2">
-          <div className={label}>Email</div>
-          <input required type="email" value={form.email} onChange={set("email")} className={field + " mt-1"} placeholder="you@brand.com" />
-        </div>
-        <div>
-          <div className={label}>Project type</div>
-          <select value={form.project} onChange={set("project")} className={field + " mt-1"}>
-            <option>Ad / Commercial</option>
-            <option>Micro Drama</option>
-            <option>Reels / Social</option>
-            <option>Short Film / Brand Film</option>
-            <option>Other</option>
-          </select>
-        </div>
-        <div>
-          <div className={label}>Budget</div>
-          <select value={form.budget} onChange={set("budget")} className={field + " mt-1"}>
-            <option>Under ₹50k</option>
-            <option>₹50k – ₹1L</option>
-            <option>₹1L – ₹3L</option>
-            <option>₹3L – ₹10L</option>
-            <option>₹10L+</option>
-          </select>
-        </div>
-        <div className="sm:col-span-2">
-          <div className={label}>Timeline</div>
-          <select value={form.timeline} onChange={set("timeline")} className={field + " mt-1"}>
-            <option>ASAP (under 2 weeks)</option>
-            <option>2–4 weeks</option>
-            <option>1–2 months</option>
-            <option>Flexible</option>
-          </select>
-        </div>
-        <div className="sm:col-span-2">
-          <div className={label}>Tell us about the project</div>
-          <textarea required rows={4} value={form.message} onChange={set("message")} className={field + " mt-1 resize-none"} placeholder="Product, audience, tone, references…" />
-        </div>
-      </div>
-      <button
-        type="submit"
-        className="w-full inline-flex items-center justify-center gap-2 rounded-full bg-background text-foreground px-6 py-3 text-sm font-medium hover:opacity-90 transition"
-      >
-        <Send className="h-4 w-4" /> Send inquiry
-      </button>
-      {sent && (
-        <p className="text-xs text-primary-foreground/80 text-center">
-          Opening your email app… if nothing happens, write to ukulele.originals@gmail.com.
-        </p>
-      )}
-    </form>
   );
 }
 
@@ -655,7 +523,7 @@ function Footer() {
     <footer className="border-t border-border py-10">
       <div className="mx-auto max-w-7xl px-6 flex flex-wrap items-center justify-between gap-4">
         <div className="flex items-center gap-2">
-          <img src={logo.url} alt="" className="h-7 w-7 object-contain" />
+          <img src={logo} alt="" className="h-7 w-7 object-contain" />
           <span className="text-sm text-muted-foreground">© {new Date().getFullYear()} Ukulele Originals. Stories that stay with you.</span>
         </div>
         <div className="flex items-center gap-5 text-sm text-muted-foreground">
