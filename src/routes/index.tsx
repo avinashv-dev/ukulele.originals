@@ -209,14 +209,16 @@ function HeroWordmark() {
         <span className="text-[30px] font-black text-[#7a642f] lg:text-[44px] xl:text-[50px]">ORIGIN</span>
         <span className="text-[34px] font-black text-[#d4a94a] lg:text-[46px] xl:text-[58px]">ALS</span>
       </div>
-      <div className="mt-6 h-px w-full bg-[#1c2338]" />
-      <div className="mt-4 flex gap-6 lg:gap-8">
-        {stats.map((s) => (
-          <div key={s.l}>
-            <div className="font-display text-[22px] leading-none text-[#d4a94a]">{s.n}</div>
-            <div className="mt-1 text-[9px] uppercase tracking-widest text-muted-foreground">{s.l}</div>
-          </div>
-        ))}
+      <div className="mt-6">
+        <div className="h-px w-full bg-[#1c2338]" />
+        <div className="mt-4 flex gap-6 lg:gap-8">
+          {stats.map((s) => (
+            <div key={s.l}>
+              <div className="font-display text-[22px] leading-none text-[#d4a94a]">{s.n}</div>
+              <div className="mt-1 text-[9px] uppercase tracking-widest text-muted-foreground">{s.l}</div>
+            </div>
+          ))}
+        </div>
       </div>
     </div>
   );
@@ -232,7 +234,7 @@ function Hero() {
             <span className="h-1.5 w-1.5 rounded-full bg-primary animate-pulse" />
             Thrissur, Kerala
           </div>
-          <h1 className="font-display mt-6 text-3xl md:text-4xl lg:text-5xl xl:text-6xl leading-[0.95] tracking-tight md:whitespace-nowrap">
+          <h1 className="font-display mt-6 text-3xl sm:text-4xl xl:text-6xl leading-[0.95] tracking-tight sm:whitespace-nowrap">
             Stories that <span className="text-gradient">stay with you</span> — built for the scroll.
           </h1>
           <p className="mt-6 max-w-2xl text-base md:text-xl text-muted-foreground leading-relaxed">
@@ -290,7 +292,7 @@ function Services() {
         <div className="flex items-end justify-between flex-wrap gap-6 mb-6">
           <div>
             <div className="text-xs uppercase tracking-[0.3em] text-primary">What we make</div>
-            <h2 className="font-display mt-4 text-4xl md:text-6xl leading-tight max-w-2xl">
+            <h2 className="font-display mt-4 text-4xl md:text-6xl leading-tight lg:whitespace-nowrap">
               Six ways we can make your brand <span className="text-gradient">unmissable.</span>
             </h2>
           </div>
@@ -407,7 +409,7 @@ function Talent() {
         <div className="flex items-end justify-between flex-wrap gap-6 mb-6">
           <div>
             <div className="text-xs uppercase tracking-[0.3em] text-primary">The ensemble</div>
-            <h2 className="font-display mt-4 text-4xl md:text-6xl leading-tight max-w-2xl">
+            <h2 className="font-display mt-4 text-4xl md:text-6xl leading-tight lg:whitespace-nowrap">
               Faces your audience will remember.
             </h2>
           </div>
@@ -462,8 +464,8 @@ function Process() {
           {steps.map((s, i) => {
             const Icon = s.icon;
             return (
-              <div key={s.n} className="relative">
-                <Card className="group relative overflow-hidden border-border/60 bg-card/60 backdrop-blur transition-all duration-300 hover:-translate-y-1.5 hover:border-primary/50 hover:shadow-xl hover:shadow-primary/10">
+              <div key={s.n} className="relative h-full">
+                <Card className="group relative h-full overflow-hidden border-border/60 bg-card/60 backdrop-blur transition-all duration-300 hover:-translate-y-1.5 hover:border-primary/50 hover:shadow-xl hover:shadow-primary/10">
                   <div className="pointer-events-none absolute -right-6 -top-6 h-28 w-28 rounded-full bg-primary/20 opacity-0 blur-2xl transition-opacity duration-300 group-hover:opacity-100" />
                   <CardHeader className="relative">
                     <div className="flex h-11 w-11 items-center justify-center rounded-lg bg-primary/10 text-primary transition-colors duration-300 group-hover:bg-primary group-hover:text-primary-foreground">
