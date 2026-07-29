@@ -211,9 +211,8 @@ function Nav() {
       </div>
 
       <div
-        className={`md:hidden absolute left-0 right-0 top-full mt-2 rounded-3xl glass glass-hi transition-all duration-300 ease-out ${
-          isMenuOpen ? "translate-y-0 opacity-100" : "pointer-events-none -translate-y-2 opacity-0"
-        }`}
+        className={`md:hidden absolute left-0 right-0 top-full mt-2 rounded-3xl glass glass-hi transition-all duration-300 ease-out ${isMenuOpen ? "translate-y-0 opacity-100" : "pointer-events-none -translate-y-2 opacity-0"
+          }`}
       >
         <nav className="flex flex-col gap-1 p-4">
           {NAV_LINKS.map((l) => (
@@ -240,29 +239,13 @@ function Nav() {
 }
 
 function HeroWordmark() {
-  const stats = [
-    { n: "1K+", l: "Followers & growing" },
-    { n: "30+", l: "Films shipped" },
-    { n: "4", l: "In-house actors" },
-  ];
   return (
-    <div className="mt-10 flex flex-col items-center text-center lg:mt-44 lg:items-end lg:justify-self-end lg:text-right">
+    <div className="mt-24 lg:mt-48 flex flex-col items-center text-center lg:items-end lg:justify-center lg:self-stretch lg:justify-self-end lg:text-right">
       <div className="flex flex-col leading-[0.9]">
-        <span className="text-[22px] font-black text-[#3a4568] lg:text-[38px]">UKU</span>
-        <span className="text-[26px] font-black text-[#4a5580] lg:text-[44px]">LELE</span>
-        <span className="text-[30px] font-black text-[#7a642f] lg:text-[44px] xl:text-[50px]">ORIGIN</span>
-        <span className="text-[34px] font-black text-[#d4a94a] lg:text-[46px] xl:text-[58px]">ALS</span>
-      </div>
-      <div className="mt-6">
-        <div className="h-px w-full bg-[#1c2338]" />
-        <div className="mt-4 flex gap-6 lg:gap-8">
-          {stats.map((s) => (
-            <div key={s.l}>
-              <div className="font-display text-[22px] leading-none text-[#d4a94a]">{s.n}</div>
-              <div className="mt-1 text-[9px] uppercase tracking-widest text-muted-foreground">{s.l}</div>
-            </div>
-          ))}
-        </div>
+        <span className="text-[24px] font-black text-[#3a4568] lg:text-[56px]">UKU</span>
+        <span className="text-[28px] font-black text-[#4a5580] lg:text-[64px]">LELE</span>
+        <span className="text-[32px] font-black text-[#7a642f] lg:text-[64px] xl:text-[72px]">ORIGIN</span>
+        <span className="text-[36px] font-black text-[#d4a94a] lg:text-[68px] xl:text-[84px]">ALS</span>
       </div>
     </div>
   );
