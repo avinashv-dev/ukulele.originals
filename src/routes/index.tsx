@@ -1,11 +1,12 @@
 import { createFileRoute } from "@tanstack/react-router";
+import { useState } from "react";
 import { Card, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 const logo = "/images/logo.png";
 const chindhu = "/images/chindhu.jpg";
 const avinash = "/images/avinash.jpg";
 const pratheesh = "/images/pratheesh.jpg";
 const sreehari = "/images/sreehari.jpg";
-import { Instagram, Mail, MapPin, ArrowUpRight, ArrowRight, Film, Sparkles, Clapperboard, Megaphone, Users, Zap } from "lucide-react";
+import { Instagram, Mail, MapPin, ArrowUpRight, ArrowRight, Film, Sparkles, Clapperboard, Megaphone, Users, Zap, Menu, X } from "lucide-react";
 
 export const Route = createFileRoute("/")({
   head: () => ({
@@ -169,7 +170,17 @@ function Index() {
   );
 }
 
+const NAV_LINKS = [
+  { href: "#work", label: "Studio" },
+  { href: "#services", label: "Services" },
+  { href: "#owners", label: "Founders" },
+  { href: "#talent", label: "Talent" },
+  { href: "#contact", label: "Contact" },
+];
+
 function Nav() {
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
+
   return (
     <header className="fixed top-3 inset-x-3 md:inset-x-6 z-50 rounded-full glass glass-hi">
       <div className="mx-auto max-w-7xl px-6 h-16 flex items-center justify-between">
@@ -177,12 +188,19 @@ function Nav() {
           <img src={logo} alt="Ukulele Originals" className="h-10 w-10 object-contain drop-shadow-[0_4px_12px_oklch(0.78_0.14_82/0.5)]" />
           <span className="font-display text-xl">Ukulele<span className="text-gradient">.originals</span></span>
         </a>
+        <button
+          type="button"
+          onClick={() => setIsMenuOpen((v) => !v)}
+          aria-label={isMenuOpen ? "Close menu" : "Open menu"}
+          aria-expanded={isMenuOpen}
+          className="md:hidden inline-flex h-9 w-9 items-center justify-center rounded-full text-foreground transition-colors hover:bg-card/60"
+        >
+          {isMenuOpen ? <X className="h-5 w-5" /> : <Menu className="h-5 w-5" />}
+        </button>
         <nav className="hidden md:flex items-center gap-8 text-md text-muted-foreground">
-          <a href="#work" className="nav-link hover:text-foreground">Studio</a>
-          <a href="#services" className="nav-link hover:text-foreground">Services</a>
-          <a href="#owners" className="nav-link hover:text-foreground">Founders</a>
-          <a href="#talent" className="nav-link hover:text-foreground">Talent</a>
-          <a href="#contact" className="nav-link hover:text-foreground">Contact</a>
+          {NAV_LINKS.map((l) => (
+            <a key={l.href} href={l.href} className="nav-link hover:text-foreground">{l.label}</a>
+          ))}
         </nav>
         <a
           href="#contact"
@@ -190,6 +208,32 @@ function Nav() {
         >
           Start a project <ArrowUpRight className="h-4 w-4" />
         </a>
+      </div>
+
+      <div
+        className={`md:hidden absolute left-0 right-0 top-full mt-2 rounded-3xl glass glass-hi transition-all duration-300 ease-out ${
+          isMenuOpen ? "translate-y-0 opacity-100" : "pointer-events-none -translate-y-2 opacity-0"
+        }`}
+      >
+        <nav className="flex flex-col gap-1 p-4">
+          {NAV_LINKS.map((l) => (
+            <a
+              key={l.href}
+              href={l.href}
+              onClick={() => setIsMenuOpen(false)}
+              className="rounded-xl px-3 py-2.5 text-muted-foreground transition-colors hover:bg-card hover:text-foreground"
+            >
+              {l.label}
+            </a>
+          ))}
+          <a
+            href="#contact"
+            onClick={() => setIsMenuOpen(false)}
+            className="btn-neu mt-2 inline-flex items-center justify-center gap-1.5 rounded-full bg-brand px-4 py-2.5 text-sm font-medium text-primary-foreground transition"
+          >
+            Start a project <ArrowUpRight className="h-4 w-4" />
+          </a>
+        </nav>
       </div>
     </header>
   );
@@ -431,7 +475,7 @@ function Talent() {
                   <div className="text-xs uppercase tracking-widest text-primary">{a.role}</div>
                   <div className="font-display text-2xl mt-1">{a.name}</div>
                 </div>
-                <div className="absolute right-4 top-4 h-9 w-9 rounded-full bg-background/60 backdrop-blur flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity">
+                <div className="absolute right-4 top-4 h-9 w-9 rounded-full bg-background/60 backdrop-blur flex items-center justify-center opacity-100 md:opacity-0 md:group-hover:opacity-100 transition-opacity">
                   <Instagram className="h-4 w-4" />
                 </div>
               </div>
@@ -498,14 +542,14 @@ function CTA() {
               Got a product? We'll build a world around it.
             </h2>
             <p className="mt-4 text-primary-foreground/90 text-base sm:text-lg">
-              Tell us about your brand and the reaction you want on screen. Email us or ping us on WhatsApp — we'll take it from there.
+              Tell us about your brand and the reaction you want on screen. Email us or ping us on Instagram — we'll take it from there.
             </p>
             <div className="mt-6 flex flex-wrap gap-3">
-              <a href="mailto:ukulele.originals@gmail.com" className="btn-neu inline-flex items-center gap-2 rounded-full bg-background text-foreground px-6 py-3 text-sm font-medium hover:opacity-90 transition">
-                <Mail className="h-4 w-4" /> ukulele.originals@gmail.com
+              <a href="mailto:ukulele.storiez@gmail.com" className="btn-neu inline-flex items-center gap-2 rounded-full bg-background text-foreground px-6 py-3 text-sm font-medium hover:opacity-90 transition">
+                <Mail className="h-4 w-4" /> Mail Us
               </a>
               <a href={INSTA} target="_blank" rel="noreferrer" className="btn-neu inline-flex items-center gap-2 rounded-full bg-primary-foreground/10 text-primary-foreground px-6 py-3 text-sm font-medium hover:bg-primary-foreground/15 transition">
-                <Instagram className="h-4 w-4" /> @ukulele.originals
+                <Instagram className="h-4 w-4" /> DM Us
               </a>
             </div>
             <div className="mt-6 inline-flex items-center gap-2 text-primary-foreground/80 text-sm">
