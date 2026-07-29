@@ -98,8 +98,8 @@
   --sidebar-border: oklch(0.28 0.03 265);
   --sidebar-ring: oklch(0.6 0.22 268);
 
-  --font-display: "Instrument Serif", ui-serif, Georgia, serif;
-  --font-sans: "Inter", ui-sans-serif, system-ui, sans-serif;
+  --font-display: "Marcellus", ui-serif, Georgia, serif;
+  --font-sans: "Jost", ui-sans-serif, system-ui, sans-serif;
 
   --gradient-hero: radial-gradient(1200px 600px at 12% 8%, oklch(0.78 0.14 82 / 0.18), transparent 60%),
                    radial-gradient(900px 500px at 88% 92%, oklch(0.55 0.18 265 / 0.28), transparent 60%),
@@ -155,8 +155,9 @@
     color: var(--color-foreground);
     font-family: var(--font-sans);
     -webkit-font-smoothing: antialiased;
+    overflow-x: hidden;
   }
-  html { scroll-behavior: smooth; }
+  html { scroll-behavior: smooth; overflow-x: hidden; }
   .font-display { font-family: var(--font-display); letter-spacing: -0.01em; }
   .text-gradient {
     background: var(--gradient-brand);

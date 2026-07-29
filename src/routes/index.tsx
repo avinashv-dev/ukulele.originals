@@ -177,7 +177,7 @@ function Nav() {
           <img src={logo} alt="Ukulele Originals" className="h-10 w-10 object-contain drop-shadow-[0_4px_12px_oklch(0.78_0.14_82/0.5)]" />
           <span className="font-display text-xl">Ukulele<span className="text-gradient">.originals</span></span>
         </a>
-        <nav className="hidden md:flex items-center gap-8 text-sm text-muted-foreground">
+        <nav className="hidden md:flex items-center gap-8 text-md text-muted-foreground">
           <a href="#work" className="nav-link hover:text-foreground">Studio</a>
           <a href="#services" className="nav-link hover:text-foreground">Services</a>
           <a href="#owners" className="nav-link hover:text-foreground">Founders</a>
@@ -202,7 +202,7 @@ function HeroWordmark() {
     { n: "4", l: "In-house actors" },
   ];
   return (
-    <div className="mt-10 flex flex-col items-center text-center lg:mt-0 lg:items-end lg:justify-self-end lg:text-right">
+    <div className="mt-10 flex flex-col items-center text-center lg:mt-44 lg:items-end lg:justify-self-end lg:text-right">
       <div className="flex flex-col leading-[0.9]">
         <span className="text-[22px] font-black text-[#3a4568] lg:text-[38px]">UKU</span>
         <span className="text-[26px] font-black text-[#4a5580] lg:text-[44px]">LELE</span>
@@ -226,18 +226,18 @@ function HeroWordmark() {
 
 function Hero() {
   return (
-    <section id="top" className="relative overflow-hidden bg-hero noise pt-32 pb-12 md:pt-40 md:pb-16">
+    <section id="top" className="relative overflow-hidden bg-hero noise pt-[76px] pb-12 md:pt-20 md:pb-16">
       <div className="aurora" aria-hidden />
-      <div className="relative mx-auto max-w-7xl px-6 grid lg:grid-cols-[1.4fr_1fr] gap-10 items-center">
-        <div className="reveal">
+      <div className="relative mx-auto max-w-7xl px-6 grid lg:grid-cols-[1.7fr_1fr] gap-10 items-center">
+        <div className="reveal min-w-0">
           <div className="inline-flex items-center gap-2 rounded-full border border-border bg-card/60 px-3 py-1 text-xs text-muted-foreground backdrop-blur">
             <span className="h-1.5 w-1.5 rounded-full bg-primary animate-pulse" />
             Thrissur, Kerala
           </div>
-          <h1 className="font-display mt-6 text-3xl sm:text-4xl xl:text-6xl leading-[0.95] tracking-tight sm:whitespace-nowrap">
+          <h1 className="font-display mt-2 text-2xl sm:text-3xl xl:text-6xl leading-[0.95] tracking-tight sm:whitespace-nowrap">
             Stories that <span className="text-gradient">stay with you</span> — built for the scroll.
           </h1>
-          <p className="mt-6 max-w-2xl text-base md:text-xl text-muted-foreground leading-relaxed">
+          <p className="mt-6 max-w-3xl text-base md:text-xl xl:text-2xl text-muted-foreground leading-relaxed">
             Ukulele Originals is a Thrissur-based creative studio turning products into
             characters and brands into worlds. Ads, micro dramas and short films
             engineered to make people stop, watch, and remember.
@@ -268,7 +268,7 @@ function About() {
             A little studio with a cinematic obsession.
           </h2>
         </div>
-        <div className="md:col-span-7 md:col-start-6 text-lg text-muted-foreground leading-relaxed space-y-5">
+        <div className="md:col-span-7 md:col-start-6 text-xl text-muted-foreground leading-relaxed space-y-5">
           <p>
             We started as three friends — an actor, a director, and a performer — posting reels
             under <a href={INSTA} target="_blank" rel="noreferrer" className="text-foreground underline decoration-primary/40 underline-offset-4">@ukulele.originals</a>.
@@ -333,7 +333,7 @@ function Owners() {
       <div className="aurora opacity-60" aria-hidden />
       <div className="relative mx-auto max-w-7xl px-6">
         <div className="text-xs uppercase tracking-[0.3em] text-primary">The founders</div>
-        <h2 className="font-display mt-4 text-4xl md:text-6xl leading-tight max-w-3xl">
+        <h2 className="font-display mt-4 text-4xl md:text-6xl leading-tight sm:whitespace-nowrap">
           Three obsessions. One studio.
         </h2>
         <p className="mt-4 max-w-2xl text-lg text-muted-foreground">
@@ -406,14 +406,12 @@ function Talent() {
   return (
     <section id="talent" className="relative py-10 md:py-14 bg-card/30 border-y border-border">
       <div className="mx-auto max-w-7xl px-6">
-        <div className="flex items-end justify-between flex-wrap gap-6 mb-6">
-          <div>
-            <div className="text-xs uppercase tracking-[0.3em] text-primary">The ensemble</div>
-            <h2 className="font-display mt-4 text-4xl md:text-6xl leading-tight lg:whitespace-nowrap">
-              Faces your audience will remember.
-            </h2>
-          </div>
-          <p className="max-w-md text-muted-foreground">
+        <div className="mb-6">
+          <div className="text-xs uppercase tracking-[0.3em] text-primary">The ensemble</div>
+          <h2 className="font-display mt-4 text-4xl md:text-6xl leading-tight lg:whitespace-nowrap">
+            Faces your audience will remember.
+          </h2>
+          <p className="mt-4 text-muted-foreground lg:whitespace-nowrap">
             A trained in-house cast — trained across Actlab, PUPA, Kannan Unni and more —
             ready to carry your story.
           </p>
