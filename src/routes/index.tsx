@@ -319,7 +319,7 @@ function Services() {
         <div className="flex items-end justify-between flex-wrap gap-6 mb-6">
           <div>
             <div className="text-xs uppercase tracking-[0.3em] text-primary">What we make</div>
-            <h2 className="font-display mt-4 text-4xl md:text-6xl leading-tight lg:whitespace-nowrap">
+            <h2 className="font-display mt-4 text-4xl md:text-5xl leading-tight lg:whitespace-nowrap">
               Six ways we can make your brand <span className="text-gradient">unmissable.</span>
             </h2>
           </div>
@@ -360,7 +360,7 @@ function Owners() {
       <div className="aurora opacity-60" aria-hidden />
       <div className="relative mx-auto max-w-7xl px-6">
         <div className="text-xs uppercase tracking-[0.3em] text-primary">The founders</div>
-        <h2 className="font-display mt-4 text-4xl md:text-6xl leading-tight sm:whitespace-nowrap">
+        <h2 className="font-display mt-4 text-4xl md:text-5xl leading-tight md:whitespace-nowrap">
           Three obsessions. One studio.
         </h2>
         <p className="mt-4 max-w-2xl text-lg text-muted-foreground">
@@ -435,7 +435,7 @@ function Talent() {
       <div className="mx-auto max-w-7xl px-6">
         <div className="mb-6">
           <div className="text-xs uppercase tracking-[0.3em] text-primary">The ensemble</div>
-          <h2 className="font-display mt-4 text-4xl md:text-6xl leading-tight lg:whitespace-nowrap">
+          <h2 className="font-display mt-4 text-4xl md:text-5xl leading-tight lg:whitespace-nowrap">
             Faces your audience will remember.
           </h2>
           <p className="mt-4 text-muted-foreground lg:whitespace-nowrap">
@@ -484,7 +484,7 @@ function Process() {
     <section className="py-10 md:py-14">
       <div className="mx-auto max-w-7xl px-6">
         <div className="text-xs uppercase tracking-[0.3em] text-primary">How we work</div>
-        <h2 className="font-display mt-4 text-3xl sm:text-4xl md:text-5xl lg:text-6xl leading-tight lg:whitespace-nowrap">From WhatsApp to wrap in weeks, not quarters.</h2>
+        <h2 className="font-display mt-4 text-3xl sm:text-4xl md:text-5xl leading-tight lg:whitespace-nowrap">From WhatsApp to wrap in weeks, not quarters.</h2>
         <div className="mt-10 grid gap-5 md:grid-cols-2 lg:grid-cols-4">
           {steps.map((s, i) => {
             const Icon = s.icon;
