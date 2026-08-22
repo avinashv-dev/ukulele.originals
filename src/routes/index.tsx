@@ -285,6 +285,30 @@ function Hero() {
   );
 }
 
+const VIDEOS = [
+  {
+    title: "Washyfi Ad",
+    src: "https://player.vimeo.com/video/1220378645?title=0&byline=0&portrait=0",
+  },
+];
+
+function VideoCard({ title, src }: { title: string; src: string }) {
+  return (
+    <div>
+      <div className="relative aspect-video rounded-xl overflow-hidden">
+        <iframe
+          src={src}
+          title={title}
+          className="absolute inset-0 w-full h-full"
+          allow="autoplay; fullscreen; picture-in-picture"
+          allowFullScreen
+        />
+      </div>
+      <h3 className="mt-3 font-display text-lg leading-snug">{title}</h3>
+    </div>
+  );
+}
+
 function About() {
   return (
     <section id="work" className="relative py-10 md:py-14">
@@ -306,6 +330,13 @@ function About() {
             No stock templates. No cookie-cutter reels. Every frame is written, cast, shot and
             edited by the same team that will read your brief — so nothing gets lost in the handoff.
           </p>
+        </div>
+        <div className="md:col-span-12 mt-8">
+          <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3">
+            {VIDEOS.map((v) => (
+              <VideoCard key={v.title} {...v} />
+            ))}
+          </div>
         </div>
       </div>
     </section>
