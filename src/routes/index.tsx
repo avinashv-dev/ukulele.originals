@@ -108,7 +108,7 @@ const OWNERS: Owner[] = [
     name: "Avinash Vijayan",
     role: "Co-Founder · Actor · Story-driven Performer",
     tagline: "Story-driven performer. Thrissur-based. Ready to travel.",
-    bio: "Trained actor with credits across OTT, film, short-form and brand — from Disney+ Hotstar's 1000 Babies to Jos Alukkas and Torc. Multilingual, movement-trained, and built for characters that carry a story.",
+    bio: "Trained actor with credits across OTT, film, short-form and brand — from Disney+ Hotstar's 1000 Babies to Jos Alukkas and ChatGPT. Multilingual, movement-trained, and built for characters that carry a story.",
     image: avinash,
     insta: "https://www.instagram.com/actor.avinaash_vijayan",
     sections: [
@@ -116,7 +116,7 @@ const OWNERS: Owner[] = [
       { title: "Films", items: ["Barabas (Upcoming)", "Izha", "The Waiting List"] },
       { title: "Short Films", items: ["Antharaalam (Upcoming)", "Kottikalaasham (Upcoming)", "Padayani", "Father", "The Human Expiry", "Liberation"] },
       { title: "Other Work", items: ["Surya Comedy Sitcom", "RU-Vlog YouTube Channel", "Ponmutta YouTube Channel"] },
-      { title: "Brand Work", items: ["Jos Alukkas — Advertisement", "Nambisan Ghee — Advertisement", "Torc — Advertisement"] },
+      { title: "Brand Work", items: ["ChatGPT — Advertisement", "Ramsons — Advertisement", "Jos Alukkas — Advertisement", "Nambisan Ghee — Advertisement", "Torc — Advertisement"] },
       { title: "Skills", items: ["Acting (Film & Digital)", "Dance", "Shaolin Kung Fu", "Malayalam · Tamil · Hindi · English"] },
       { title: "Training", items: ["Sajeev Raman's Actlab", "Tharun Moorthy's PUPA", "Abu Valayamkulam's Acting Workshop"] },
     ],
