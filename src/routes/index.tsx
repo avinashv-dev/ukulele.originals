@@ -148,7 +148,7 @@ const ACTORS = [
   {
     name: "Avinash Vijayan",
     role: "Actor/Director/Writer",
-    credits: ["1000 Babies (Disney+ Hotstar)", "Izha", "Jos Alukkas · Torc Ads"],
+    credits: ["1000 Babies (Disney+ Hotstar)", "Izha", "Jos Alukkas · ChatGPT"],
     image: avinash,
     insta: "https://www.instagram.com/actor.avinaash_vijayan",
   },
