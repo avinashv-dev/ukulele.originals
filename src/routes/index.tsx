@@ -240,12 +240,12 @@ function Nav() {
 
 function HeroWordmark() {
   return (
-    <div className="mt-24 lg:mt-48 flex flex-col items-center text-center lg:items-end lg:justify-center lg:self-stretch lg:justify-self-end lg:text-right">
+    <div className="mt-10 lg:mt-48 flex flex-col items-center text-center lg:items-end lg:justify-center lg:self-stretch lg:justify-self-end lg:text-right">
       <div className="flex flex-col leading-[0.9]">
-        <span className="text-[24px] font-black text-[#3a4568] lg:text-[56px]">UKU</span>
-        <span className="text-[28px] font-black text-[#4a5580] lg:text-[64px]">LELE</span>
-        <span className="text-[32px] font-black text-[#7a642f] lg:text-[64px] xl:text-[72px]">ORIGIN</span>
-        <span className="text-[36px] font-black text-[#d4a94a] lg:text-[68px] xl:text-[84px]">ALS</span>
+        <span className="text-[42px] font-black text-[#3a4568] lg:text-[56px]">UKU</span>
+        <span className="text-[50px] font-black text-[#4a5580] lg:text-[64px]">LELE</span>
+        <span className="text-[58px] font-black text-[#7a642f] lg:text-[64px] xl:text-[72px]">ORIGIN</span>
+        <span className="text-[66px] font-black text-[#d4a94a] lg:text-[68px] xl:text-[84px]">ALS</span>
       </div>
     </div>
   );
