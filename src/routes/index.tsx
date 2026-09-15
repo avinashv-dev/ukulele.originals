@@ -256,7 +256,7 @@ function HeroWordmark() {
 
 function Hero() {
   return (
-    <section id="top" className="relative overflow-hidden hero-section pt-[76px] pb-12 md:pt-20 md:pb-16">
+    <section id="top" className="relative overflow-hidden hero-section pt-[100px] pb-12 md:pt-20 md:pb-16">
       <div className="aurora" aria-hidden />
       <div className="relative mx-auto max-w-7xl px-6 grid lg:grid-cols-[1.7fr_1fr] gap-10 items-center">
         <div className="reveal min-w-0">
