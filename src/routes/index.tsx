@@ -114,9 +114,9 @@ const OWNERS: Owner[] = [
     sections: [
       { title: "Web Series", items: ["Amazon Micro Series", "1000 Babies — Disney+ Hotstar", "Blindfold — SonyLIV (Upcoming)", "Padavett (Upcoming)"] },
       { title: "Films", items: ["Barabas (Upcoming)", "Izha", "The Waiting List"] },
-      { title: "Short Films", items: ["Antharaalam (Upcoming)", "Kottikalaasham (Upcoming)", "Padayani", "Father", "The Human Expiry", "Liberation"] },
+      { title: "Short Films", items: ["Antharaalam", "Kottikalaasham (Upcoming)", "Padayani", "Father", "The Human Expiry", "Liberation"] },
       { title: "Other Work", items: ["Surya Comedy Sitcom", "RU-Vlog YouTube Channel", "Ponmutta YouTube Channel"] },
-      { title: "Brand Work", items: ["ChatGPT — Advertisement", "Ramsons — Advertisement", "Jos Alukkas — Advertisement", "Nambisan Ghee — Advertisement", "Torc — Advertisement"] },
+      { title: "Brand Work", items: ["ChatGPT — Advertisement", "Ramsons — Advertisement", "Jos Alukkas — Advertisement", "Arun Textiles — Advertisement (Tamil)", "Nambisan Ghee — Advertisement", "Torc — Advertisement"] },
       { title: "Skills", items: ["Acting (Film & Digital)", "Dance", "Shaolin Kung Fu", "Malayalam · Tamil · Hindi · English"] },
       { title: "Training", items: ["Sajeev Raman's Actlab", "Tharun Moorthy's PUPA", "Abu Valayamkulam's Acting Workshop"] },
     ],
@@ -156,16 +156,19 @@ const ACTORS = [
 
 function Index() {
   return (
-    <div className="min-h-screen bg-background text-foreground">
+    <div className="min-h-screen text-foreground">
+      <div className="app-background" aria-hidden="true" />
       <Nav />
-      <Hero />
-      <About />
-      <Services />
-      <Owners />
-      <Talent />
-      <Process />
-      <CTA />
-      <Footer />
+      <main className="app-content">
+        <Hero />
+        <About />
+        <Services />
+        <Owners />
+        <Talent />
+        <Process />
+        <CTA />
+        <Footer />
+      </main>
     </div>
   );
 }
@@ -182,10 +185,10 @@ function Nav() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
 
   return (
-    <header className="fixed top-3 inset-x-3 md:inset-x-6 z-50 rounded-full glass glass-hi">
+    <header className="fixed top-3 inset-x-3 md:inset-x-6 z-50 rounded-full glass-nav glass-hi">
       <div className="mx-auto max-w-7xl px-6 h-16 flex items-center justify-between">
-        <a href="#top" className="flex items-center gap-2">
-          <img src={logo} alt="Ukulele Originals" className="h-10 w-10 object-contain drop-shadow-[0_4px_12px_oklch(0.78_0.14_82/0.5)]" />
+        <a href="#top" className="flex items-center gap-2 text-[color:var(--nav-fg)]">
+          <img src={logo} alt="Ukulele Originals" className="h-14 w-14 object-contain drop-shadow-[0_4px_12px_rgba(131,149,102,0.5)]" />
           <span className="font-display text-xl">Ukulele<span className="text-gradient">.originals</span></span>
         </a>
         <button
@@ -193,13 +196,13 @@ function Nav() {
           onClick={() => setIsMenuOpen((v) => !v)}
           aria-label={isMenuOpen ? "Close menu" : "Open menu"}
           aria-expanded={isMenuOpen}
-          className="md:hidden inline-flex h-9 w-9 items-center justify-center rounded-full text-foreground transition-colors hover:bg-card/60"
+          className="md:hidden inline-flex h-9 w-9 items-center justify-center rounded-full text-[color:var(--nav-fg)] transition-colors hover:bg-[rgba(131,149,102,0.14)]"
         >
           {isMenuOpen ? <X className="h-5 w-5" /> : <Menu className="h-5 w-5" />}
         </button>
-        <nav className="hidden md:flex items-center gap-8 text-md text-muted-foreground">
+        <nav className="hidden md:flex items-center gap-8 text-base text-[color:var(--nav-fg-muted)]">
           {NAV_LINKS.map((l) => (
-            <a key={l.href} href={l.href} className="nav-link hover:text-foreground">{l.label}</a>
+            <a key={l.href} href={l.href} className="nav-link hover:text-[color:var(--nav-accent)]">{l.label}</a>
           ))}
         </nav>
         <a
@@ -211,7 +214,7 @@ function Nav() {
       </div>
 
       <div
-        className={`md:hidden absolute left-0 right-0 top-full mt-2 rounded-3xl glass glass-hi transition-all duration-300 ease-out ${isMenuOpen ? "translate-y-0 opacity-100" : "pointer-events-none -translate-y-2 opacity-0"
+        className={`md:hidden absolute left-0 right-0 top-full mt-2 rounded-3xl glass-nav glass-hi transition-all duration-300 ease-out ${isMenuOpen ? "translate-y-0 opacity-100" : "pointer-events-none -translate-y-2 opacity-0"
           }`}
       >
         <nav className="flex flex-col gap-1 p-4">
@@ -220,7 +223,7 @@ function Nav() {
               key={l.href}
               href={l.href}
               onClick={() => setIsMenuOpen(false)}
-              className="rounded-xl px-3 py-2.5 text-muted-foreground transition-colors hover:bg-card hover:text-foreground"
+              className="rounded-xl px-3 py-2.5 text-[color:var(--nav-fg-muted)] transition-colors hover:bg-[rgba(131,149,102,0.14)] hover:text-[color:var(--nav-accent)]"
             >
               {l.label}
             </a>
@@ -242,10 +245,10 @@ function HeroWordmark() {
   return (
     <div className="mt-10 lg:mt-48 flex flex-col items-center text-center lg:items-end lg:justify-center lg:self-stretch lg:justify-self-end lg:text-right">
       <div className="flex flex-col leading-[0.9]">
-        <span className="text-[42px] font-black text-[#3a4568] lg:text-[56px]">UKU</span>
-        <span className="text-[50px] font-black text-[#4a5580] lg:text-[64px]">LELE</span>
-        <span className="text-[58px] font-black text-[#7a642f] lg:text-[64px] xl:text-[72px]">ORIGIN</span>
-        <span className="text-[66px] font-black text-[#d4a94a] lg:text-[68px] xl:text-[84px]">ALS</span>
+        <span className="text-[42px] font-black text-[rgba(243,235,221,0.78)] lg:text-[56px]">UKU</span>
+        <span className="text-[50px] font-black text-[rgba(243,235,221,0.78)] lg:text-[64px]">LELE</span>
+        <span className="text-[58px] font-black text-[#839566] lg:text-[64px] xl:text-[72px]">ORIGIN</span>
+        <span className="text-[66px] font-black text-[#839566] lg:text-[68px] xl:text-[84px]">ALS</span>
       </div>
     </div>
   );
@@ -253,7 +256,7 @@ function HeroWordmark() {
 
 function Hero() {
   return (
-    <section id="top" className="relative overflow-hidden bg-hero noise pt-[76px] pb-12 md:pt-20 md:pb-16">
+    <section id="top" className="relative overflow-hidden hero-section pt-[76px] pb-12 md:pt-20 md:pb-16">
       <div className="aurora" aria-hidden />
       <div className="relative mx-auto max-w-7xl px-6 grid lg:grid-cols-[1.7fr_1fr] gap-10 items-center">
         <div className="reveal min-w-0">
@@ -262,7 +265,7 @@ function Hero() {
             Thrissur, Kerala
           </div>
           <h1 className="font-display mt-2 text-2xl sm:text-3xl xl:text-6xl leading-[0.95] tracking-tight sm:whitespace-nowrap">
-            Stories that <span className="text-gradient">stay with you</span> — built for the scroll.
+            Stories that <span className="text-[#839566]">stay with you</span> — built for the scroll.
           </h1>
           <p className="mt-6 max-w-3xl text-base md:text-xl xl:text-2xl text-muted-foreground leading-relaxed">
             Ukulele Originals is a Thrissur-based creative studio turning products into
@@ -311,7 +314,7 @@ function VideoCard({ title, src }: { title: string; src: string }) {
 
 function About() {
   return (
-    <section id="work" className="relative py-10 md:py-14">
+    <section id="work" className="relative py-10 md:py-14 about-section">
       <div className="mx-auto max-w-7xl px-6 grid md:grid-cols-12 gap-12 md:items-center">
         <div className="md:col-span-4">
           <div className="text-xs uppercase tracking-[0.3em] text-primary">The studio</div>
@@ -345,7 +348,7 @@ function About() {
 
 function Services() {
   return (
-    <section id="services" className="relative py-10 md:py-14 bg-card/30 border-y border-border">
+    <section id="services" className="relative py-10 md:py-14 services-section border-y border-border">
       <div className="mx-auto max-w-7xl px-6">
         <div className="flex items-end justify-between flex-wrap gap-6 mb-6">
           <div>
@@ -387,7 +390,7 @@ function InitialAvatar({ name }: { name: string }) {
 
 function Owners() {
   return (
-    <section id="owners" className="relative py-10 md:py-14 overflow-hidden">
+    <section id="owners" className="relative py-10 md:py-14 overflow-hidden owners-section">
       <div className="aurora opacity-60" aria-hidden />
       <div className="relative mx-auto max-w-7xl px-6">
         <div className="text-xs uppercase tracking-[0.3em] text-primary">The founders</div>
@@ -462,7 +465,7 @@ function OwnerCard({ owner: o }: { owner: Owner }) {
 
 function Talent() {
   return (
-    <section id="talent" className="relative py-10 md:py-14 bg-card/30 border-y border-border">
+    <section id="talent" className="relative py-10 md:py-14 talent-section border-y border-border">
       <div className="mx-auto max-w-7xl px-6">
         <div className="mb-6">
           <div className="text-xs uppercase tracking-[0.3em] text-primary">The ensemble</div>
@@ -512,7 +515,7 @@ function Process() {
     { n: "04", t: "Edit & Deliver", d: "Colour, sound, motion — final cuts optimised for reels and YouTube. Ready to post.", icon: Zap },
   ];
   return (
-    <section className="py-10 md:py-14">
+    <section className="py-10 md:py-14 process-section">
       <div className="mx-auto max-w-7xl px-6">
         <div className="text-xs uppercase tracking-[0.3em] text-primary">How we work</div>
         <h2 className="font-display mt-4 text-3xl sm:text-4xl md:text-5xl leading-tight lg:whitespace-nowrap">From WhatsApp to wrap in weeks, not quarters.</h2>
@@ -547,9 +550,9 @@ function Process() {
 
 function CTA() {
   return (
-    <section id="contact" className="relative py-10 md:py-14">
+    <section id="contact" className="relative py-10 md:py-14 contact-section">
       <div className="mx-auto max-w-4xl px-4 sm:px-6">
-        <div className="relative overflow-hidden rounded-3xl bg-brand p-6 sm:p-10 md:p-14 shadow-glow noise">
+        <div className="relative overflow-hidden rounded-3xl glass-brand p-6 sm:p-10 md:p-14 shadow-glow">
           <div className="relative max-w-3xl">
             <div className="text-xs uppercase tracking-[0.3em] text-primary-foreground/80">Let's make something</div>
             <h2 className="font-display mt-4 text-3xl sm:text-4xl md:text-5xl leading-tight text-primary-foreground">
@@ -578,7 +581,7 @@ function CTA() {
 
 function Footer() {
   return (
-    <footer className="border-t border-border py-10">
+    <footer className="border-t border-border py-10 footer-section">
       <div className="mx-auto max-w-7xl px-6 flex flex-wrap items-center justify-between gap-4">
         <div className="flex items-center gap-2">
           <img src={logo} alt="" className="h-7 w-7 object-contain" />
