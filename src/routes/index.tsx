@@ -3,8 +3,7 @@ import { useState } from "react";
 import { Card, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 const logo = "/images/logo.png";
 const chindhu = "/images/chindhu.jpg";
-const avinash = "/images/avinash.jpg";
-const pratheesh = "/images/pratheesh.jpg";
+const avinash = "/images/avinash.webp";
 const sreehari = "/images/sreehari.jpg";
 import { Instagram, Mail, MapPin, ArrowUpRight, ArrowRight, Film, Sparkles, Clapperboard, Megaphone, Users, Zap, Menu, X } from "lucide-react";
 
@@ -112,11 +111,11 @@ const OWNERS: Owner[] = [
     image: avinash,
     insta: "https://www.instagram.com/actor.avinaash_vijayan",
     sections: [
-      { title: "Web Series", items: ["Amazon Micro Series", "1000 Babies — Disney+ Hotstar", "Blindfold — SonyLIV (Upcoming)", "Padavett (Upcoming)"] },
+      { title: "Web Series", items: ["Amazon Micro Series - Hindi", "1000 Babies — Disney+ Hotstar", "Blindfold — SonyLIV (Upcoming)", "Padavett (Upcoming)"] },
       { title: "Films", items: ["Barabas (Upcoming)", "Izha", "The Waiting List"] },
-      { title: "Short Films", items: ["Antharaalam", "Kottikalaasham (Upcoming)", "Padayani", "Father", "The Human Expiry", "Liberation"] },
+      { title: "Short Films", items: ["Antharaalam", "Kottikalaasham", "Padayani", "Father", "The Human Expiry", "Liberation"] },
       { title: "Other Work", items: ["Surya Comedy Sitcom", "RU-Vlog YouTube Channel", "Ponmutta YouTube Channel"] },
-      { title: "Brand Work", items: ["ChatGPT — Advertisement", "Ramsons — Advertisement", "Jos Alukkas — Advertisement", "Arun Textiles — Advertisement (Tamil)", "Nambisan Ghee — Advertisement", "Torc — Advertisement"] },
+      { title: "Brand Work", items: ["Arun Textiles — Advertisement (Tamil)", "ChatGPT — Advertisement", "Ramsons — Advertisement", "Jos Alukkas — Advertisement", "Nambisan Ghee — Advertisement", "Torc — Advertisement"] },
       { title: "Skills", items: ["Acting (Film & Digital)", "Dance", "Shaolin Kung Fu", "Malayalam · Tamil · Hindi · English"] },
       { title: "Training", items: ["Sajeev Raman's Actlab", "Tharun Moorthy's PUPA", "Abu Valayamkulam's Acting Workshop"] },
     ],
@@ -124,13 +123,6 @@ const OWNERS: Owner[] = [
 ];
 
 const ACTORS = [
-  {
-    name: "Pratheesh Prakash",
-    role: "Actor",
-    credits: ["Surya Comedy — Artist", "Family Circus — Lead Role"],
-    image: pratheesh,
-    insta: "https://www.instagram.com/pratheesh__prakash",
-  },
   {
     name: "Chindhu Prasad",
     role: "Actor/Director/Writer",
@@ -478,27 +470,33 @@ function Talent() {
           </p>
         </div>
 
-        <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-5">
+        <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
           {ACTORS.map((a) => (
-            <a key={a.name} href={a.insta} target="_blank" rel="noreferrer" className="group block rounded-2xl overflow-hidden border border-border bg-card shadow-card hover:border-primary/60 transition-colors">
-              <div className="relative aspect-[4/5] overflow-hidden">
-                {a.image ? (
-                  <img src={a.image} alt={a.name} className="h-full w-full object-cover group-hover:scale-105 transition-transform duration-700" />
-                ) : (
-                  <InitialAvatar name={a.name} />
-                )}
-                <div className="absolute inset-0 bg-gradient-to-t from-background/95 via-background/10 to-transparent" />
-                <div className="absolute left-4 right-4 bottom-4">
-                  <div className="text-xs uppercase tracking-widest text-primary">{a.role}</div>
-                  <div className="font-display text-2xl mt-1">{a.name}</div>
-                </div>
-                <div className="absolute right-4 top-4 h-9 w-9 rounded-full bg-background/60 backdrop-blur flex items-center justify-center opacity-100 md:opacity-0 md:group-hover:opacity-100 transition-opacity">
-                  <Instagram className="h-4 w-4" />
-                </div>
+            <a
+              key={a.name}
+              href={a.insta}
+              target="_blank"
+              rel="noreferrer"
+              className="group relative block aspect-[3/4] overflow-hidden rounded-3xl border border-border shadow-card transition-colors hover:border-primary/60"
+            >
+              {a.image ? (
+                <img src={a.image} alt={a.name} className="h-full w-full object-cover transition-transform duration-700 group-hover:scale-105" />
+              ) : (
+                <InitialAvatar name={a.name} />
+              )}
+              <div className="absolute inset-0 bg-gradient-to-t from-background via-background/25 to-transparent" />
+              <div className="absolute right-4 top-4 flex h-9 w-9 items-center justify-center rounded-full bg-background/60 backdrop-blur opacity-100 transition-opacity md:opacity-0 md:group-hover:opacity-100">
+                <Instagram className="h-4 w-4" />
               </div>
-              <ul className="p-5 space-y-1.5 text-sm text-muted-foreground">
-                {a.credits.map(c => <li key={c} className="flex gap-2"><span className="text-primary">·</span>{c}</li>)}
-              </ul>
+              <div className="absolute inset-x-0 bottom-0 p-5">
+                <div className="text-xs uppercase tracking-widest text-primary">{a.role}</div>
+                <div className="mt-1 font-display text-2xl">{a.name}</div>
+                <ul className="mt-3 max-h-40 space-y-1 overflow-hidden text-sm text-muted-foreground opacity-100 transition-all duration-500 md:mt-0 md:max-h-0 md:opacity-0 md:group-hover:mt-3 md:group-hover:max-h-40 md:group-hover:opacity-100">
+                  {a.credits.map((c) => (
+                    <li key={c} className="flex gap-2"><span className="text-primary">·</span>{c}</li>
+                  ))}
+                </ul>
+              </div>
             </a>
           ))}
         </div>
