@@ -319,6 +319,7 @@ const SAARK_IMAGES = Array.from({ length: 9 }, (_, index) => ({
 }));
 
 function ImageGallery() {
+  const [selectedImage, setSelectedImage] = useState(0);
   const [activeImage, setActiveImage] = useState<number | null>(null);
   const lastTrigger = useRef<HTMLButtonElement | null>(null);
   const navigate = (direction: number) => {
@@ -334,18 +335,35 @@ function ImageGallery() {
         </div>
         <p className="text-sm text-muted-foreground">9 images <span aria-hidden="true" className="mx-2">·</span> Select to explore</p>
       </div>
-      <div className="mt-7 grid grid-cols-2 gap-3 sm:grid-cols-3 sm:gap-4 lg:grid-cols-5">
+      <div className="mt-8 grid min-w-0 gap-6 md:grid-cols-[1fr_1fr] md:items-center md:gap-12">
+        <div className="min-w-0">
+          <button
+            type="button"
+            onClick={(event) => { lastTrigger.current = event.currentTarget; setActiveImage(selectedImage); }}
+            aria-label={`Enlarge ${SAARK_IMAGES[selectedImage].alt}`}
+            aria-haspopup="dialog"
+            className="group relative mx-auto block w-full max-w-[340px] cursor-zoom-in overflow-hidden rounded-2xl focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-primary"
+          >
+            <img src={SAARK_IMAGES[selectedImage].src} alt={SAARK_IMAGES[selectedImage].alt} width={941} height={1672} loading="lazy" decoding="async" className="block h-auto w-full" />
+            <span aria-hidden="true" className="absolute right-3 top-3 flex h-10 w-10 items-center justify-center rounded-full bg-black/50 text-white backdrop-blur-sm"><ArrowUpRight className="h-5 w-5" /></span>
+          </button>
+          <div className="mx-auto mt-4 flex max-w-[340px] items-center justify-between">
+            <button type="button" aria-label="Preview previous image" onClick={() => setSelectedImage((index) => (index - 1 + SAARK_IMAGES.length) % SAARK_IMAGES.length)} className="flex h-11 w-11 items-center justify-center rounded-full border border-border hover:bg-white/10 focus-visible:outline focus-visible:outline-2 focus-visible:outline-primary"><ArrowRight className="h-4 w-4 rotate-180" /></button>
+            <p aria-live="polite" aria-atomic="true" className="text-xs tabular-nums tracking-[0.2em] text-muted-foreground">{String(selectedImage + 1).padStart(2, "0")} / 09</p>
+            <button type="button" aria-label="Preview next image" onClick={() => setSelectedImage((index) => (index + 1) % SAARK_IMAGES.length)} className="flex h-11 w-11 items-center justify-center rounded-full border border-border hover:bg-white/10 focus-visible:outline focus-visible:outline-2 focus-visible:outline-primary"><ArrowRight className="h-4 w-4" /></button>
+          </div>
+        </div>
+        <div className="min-w-0">
+          <p className="mb-4 text-xs uppercase tracking-[0.2em] text-muted-foreground">Explore the collection</p>
+          <div className="flex snap-x snap-mandatory gap-3 overflow-x-auto p-1 pb-4 md:grid md:grid-cols-3 md:overflow-visible md:pb-1">
         {SAARK_IMAGES.map(({ src, alt }, index) => (
           <button
             type="button"
             key={src}
-            onClick={(event) => {
-              lastTrigger.current = event.currentTarget;
-              setActiveImage(index);
-            }}
-            aria-label={`Enlarge ${alt}`}
-            aria-haspopup="dialog"
-            className="group relative block cursor-zoom-in overflow-hidden rounded-xl bg-black text-left ring-1 ring-white/10 transition-shadow hover:shadow-xl focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-4 focus-visible:ring-offset-background"
+            onClick={() => setSelectedImage(index)}
+            aria-label={`Preview ${alt}`}
+            aria-pressed={selectedImage === index}
+            className={`relative block w-[76px] shrink-0 snap-start cursor-pointer overflow-hidden rounded-lg text-left transition-opacity md:w-full focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary ${selectedImage === index ? "ring-2 ring-primary ring-offset-2 ring-offset-background" : "opacity-60 hover:opacity-100"}`}
           >
             <img
               src={src}
@@ -357,9 +375,10 @@ function ImageGallery() {
               className="block h-auto w-full"
             />
             <span aria-hidden="true" className="absolute left-2 top-2 rounded-full bg-black/50 px-2 py-1 text-[10px] tracking-widest text-white backdrop-blur-sm">{String(index + 1).padStart(2, "0")}</span>
-            <span aria-hidden="true" className="absolute right-2 top-2 flex h-7 w-7 items-center justify-center rounded-full bg-black/50 text-white backdrop-blur-sm transition-colors group-hover:bg-black/80"><ArrowUpRight className="h-4 w-4" /></span>
           </button>
         ))}
+          </div>
+        </div>
       </div>
       <Dialog open={activeImage !== null} onOpenChange={(open) => { if (!open) setActiveImage(null); }}>
         <DialogContent
