@@ -1,5 +1,6 @@
 import { createFileRoute } from "@tanstack/react-router";
-import { useState } from "react";
+import { useRef, useState } from "react";
+import { Dialog, DialogContent, DialogTitle, DialogDescription } from "@/components/ui/dialog";
 import { Card, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 const logo = "/images/logo.png";
 const chindhu = "/images/chindhu.jpg";
@@ -167,6 +168,7 @@ function Index() {
 
 const NAV_LINKS = [
   { href: "#work", label: "Studio" },
+  { href: "#gallery", label: "Gallery" },
   { href: "#services", label: "Services" },
   { href: "#owners", label: "Founders" },
   { href: "#talent", label: "Talent" },
@@ -188,25 +190,25 @@ function Nav() {
           onClick={() => setIsMenuOpen((v) => !v)}
           aria-label={isMenuOpen ? "Close menu" : "Open menu"}
           aria-expanded={isMenuOpen}
-          className="md:hidden inline-flex h-9 w-9 items-center justify-center rounded-full text-[color:var(--nav-fg)] transition-colors hover:bg-[rgba(131,149,102,0.14)]"
+          className="lg:hidden inline-flex h-9 w-9 items-center justify-center rounded-full text-[color:var(--nav-fg)] transition-colors hover:bg-[rgba(131,149,102,0.14)]"
         >
           {isMenuOpen ? <X className="h-5 w-5" /> : <Menu className="h-5 w-5" />}
         </button>
-        <nav className="hidden md:flex items-center gap-8 text-base text-[color:var(--nav-fg-muted)]">
+        <nav className="hidden lg:flex items-center gap-4 xl:gap-8 text-base text-[color:var(--nav-fg-muted)]">
           {NAV_LINKS.map((l) => (
             <a key={l.href} href={l.href} className="nav-link hover:text-[color:var(--nav-accent)]">{l.label}</a>
           ))}
         </nav>
         <a
           href="#contact"
-          className="btn-neu hidden sm:inline-flex items-center gap-1.5 rounded-full bg-brand px-4 py-2 text-sm font-medium text-primary-foreground transition"
+          className="btn-neu hidden xl:inline-flex items-center gap-1.5 rounded-full bg-brand px-4 py-2 text-sm font-medium text-primary-foreground transition"
         >
           Start a project <ArrowUpRight className="h-4 w-4" />
         </a>
       </div>
 
       <div
-        className={`md:hidden absolute left-0 right-0 top-full mt-2 rounded-3xl glass-nav glass-hi transition-all duration-300 ease-out ${isMenuOpen ? "translate-y-0 opacity-100" : "pointer-events-none -translate-y-2 opacity-0"
+        className={`lg:hidden absolute left-0 right-0 top-full mt-2 rounded-3xl glass-nav glass-hi transition-all duration-300 ease-out ${isMenuOpen ? "translate-y-0 opacity-100" : "pointer-events-none -translate-y-2 opacity-0"
           }`}
       >
         <nav className="flex flex-col gap-1 p-4">
@@ -282,25 +284,109 @@ function Hero() {
 
 const VIDEOS = [
   {
+    title: "Saark Jewels Ad",
+    portrait: true,
+    src: "https://player.vimeo.com/video/1232111973?title=0&byline=0&portrait=0",
+  },
+  {
     title: "Washyfi Ad",
+    portrait: false,
     src: "https://player.vimeo.com/video/1220378645?title=0&byline=0&portrait=0",
   },
 ];
 
-function VideoCard({ title, src }: { title: string; src: string }) {
+function VideoCard({ title, src, portrait = false }: { title: string; src: string; portrait?: boolean }) {
   return (
-    <div>
-      <div className="relative aspect-video rounded-xl overflow-hidden">
+    <article className={portrait ? "w-full max-w-[240px] self-start" : "w-full self-start"}>
+      <div className={portrait ? "relative aspect-[9/16] rounded-xl overflow-hidden bg-black" : "relative aspect-[16/9] rounded-xl overflow-hidden"}>
         <iframe
           src={src}
           title={title}
+          loading="lazy"
           className="absolute inset-0 w-full h-full"
           allow="autoplay; fullscreen; picture-in-picture"
           allowFullScreen
         />
       </div>
       <h3 className="mt-3 font-display text-lg leading-snug">{title}</h3>
-    </div>
+    </article>
+  );
+}
+
+const SAARK_IMAGES = Array.from({ length: 9 }, (_, index) => ({
+  src: `/images/saark/saark-jewels-${String(index + 1).padStart(2, "0")}.webp`,
+  alt: `Saark Jewels campaign artwork ${index + 1}`,
+}));
+
+function ImageGallery() {
+  const [activeImage, setActiveImage] = useState<number | null>(null);
+  const lastTrigger = useRef<HTMLButtonElement | null>(null);
+  const navigate = (direction: number) => {
+    setActiveImage((current) => current === null ? null : (current + direction + SAARK_IMAGES.length) % SAARK_IMAGES.length);
+  };
+
+  return (
+    <section id="gallery" aria-labelledby="saark-gallery-title" className="scroll-mt-24 md:col-span-12 mt-4 border-t border-border/60 pt-10 md:pt-14">
+      <div className="flex flex-wrap items-end justify-between gap-4">
+        <div>
+          <p className="text-xs uppercase tracking-[0.3em] text-primary">Gallery</p>
+          <h2 id="saark-gallery-title" className="mt-3 font-display text-3xl md:text-4xl">Saark Jewels</h2>
+        </div>
+        <p className="text-sm text-muted-foreground">9 images <span aria-hidden="true" className="mx-2">·</span> Select to explore</p>
+      </div>
+      <div className="mt-7 grid grid-cols-2 gap-3 sm:grid-cols-3 sm:gap-4 lg:grid-cols-5">
+        {SAARK_IMAGES.map(({ src, alt }, index) => (
+          <button
+            type="button"
+            key={src}
+            onClick={(event) => {
+              lastTrigger.current = event.currentTarget;
+              setActiveImage(index);
+            }}
+            aria-label={`Enlarge ${alt}`}
+            aria-haspopup="dialog"
+            className="group relative block cursor-zoom-in overflow-hidden rounded-xl bg-black text-left ring-1 ring-white/10 transition-shadow hover:shadow-xl focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-4 focus-visible:ring-offset-background"
+          >
+            <img
+              src={src}
+              alt={alt}
+              width={941}
+              height={1672}
+              loading="lazy"
+              decoding="async"
+              className="block h-auto w-full"
+            />
+            <span aria-hidden="true" className="absolute left-2 top-2 rounded-full bg-black/50 px-2 py-1 text-[10px] tracking-widest text-white backdrop-blur-sm">{String(index + 1).padStart(2, "0")}</span>
+            <span aria-hidden="true" className="absolute right-2 top-2 flex h-7 w-7 items-center justify-center rounded-full bg-black/50 text-white backdrop-blur-sm transition-colors group-hover:bg-black/80"><ArrowUpRight className="h-4 w-4" /></span>
+          </button>
+        ))}
+      </div>
+      <Dialog open={activeImage !== null} onOpenChange={(open) => { if (!open) setActiveImage(null); }}>
+        <DialogContent
+          className="w-[calc(100%-2rem)] max-w-4xl gap-3 rounded-2xl border-white/10 bg-[#121410] p-4 text-white sm:p-5"
+          onCloseAutoFocus={(event) => { event.preventDefault(); lastTrigger.current?.focus(); }}
+          onKeyDown={(event) => {
+            if (event.key === "ArrowLeft" || event.key === "ArrowRight") {
+              event.preventDefault();
+              navigate(event.key === "ArrowLeft" ? -1 : 1);
+            }
+          }}
+        >
+          <DialogTitle className="pr-8 font-display text-xl font-normal">Saark Jewels</DialogTitle>
+          <DialogDescription className="sr-only">Use the previous and next buttons or arrow keys to browse. Press Escape to close.</DialogDescription>
+          {activeImage !== null && (
+            <>
+              <img src={SAARK_IMAGES[activeImage].src} alt={SAARK_IMAGES[activeImage].alt} width={941} height={1672} className="h-[min(68dvh,720px)] w-full object-contain" />
+              <div className="flex items-center justify-between gap-3">
+                <button type="button" onClick={() => navigate(-1)} aria-label="Previous image" className="flex h-11 w-11 items-center justify-center rounded-full border border-white/20 hover:bg-white/10 focus-visible:outline focus-visible:outline-2 focus-visible:outline-white"><ArrowRight className="h-5 w-5 rotate-180" /></button>
+                <p aria-live="polite" aria-atomic="true" className="text-sm tabular-nums text-white/70">{activeImage + 1} / {SAARK_IMAGES.length}</p>
+                <button type="button" onClick={() => navigate(1)} aria-label="Next image" className="flex h-11 w-11 items-center justify-center rounded-full border border-white/20 hover:bg-white/10 focus-visible:outline focus-visible:outline-2 focus-visible:outline-white"><ArrowRight className="h-5 w-5" /></button>
+              </div>
+            </>
+          )}
+        </DialogContent>
+      </Dialog>
+    </section>
   );
 }
 
@@ -327,12 +413,13 @@ function About() {
           </p>
         </div>
         <div className="md:col-span-12 mt-8">
-          <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3">
+          <div className="mx-auto grid w-full max-w-[680px] grid-cols-1 justify-items-center gap-6 max-sm:max-w-[320px] sm:grid-cols-2 sm:gap-8">
             {VIDEOS.map((v) => (
               <VideoCard key={v.title} {...v} />
             ))}
           </div>
         </div>
+        <ImageGallery />
       </div>
     </section>
   );
